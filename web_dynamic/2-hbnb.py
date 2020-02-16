@@ -10,7 +10,7 @@ from uuid import uuid4, UUID
 # flask setup
 app = Flask(__name__)
 app.url_map.strict_slashes = False
-port = 5001
+port = 5000
 host = '0.0.0.0'
 
 
@@ -35,7 +35,7 @@ def hbnb_filters(the_id=None):
     places = storage.all('Place').values()
     users = dict([user.id, "{} {}".format(user.first_name, user.last_name)]
                  for user in storage.all('User').values())
-    return render_template('1-hbnb.html',
+    return render_template('2-hbnb.html',
                            states=states,
                            amens=amens,
                            places=places,
