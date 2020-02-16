@@ -10,7 +10,7 @@ from uuid import uuid4, UUID
 # flask setup
 app = Flask(__name__)
 app.url_map.strict_slashes = False
-port = 5001
+port = 5000
 host = '0.0.0.0'
 
 

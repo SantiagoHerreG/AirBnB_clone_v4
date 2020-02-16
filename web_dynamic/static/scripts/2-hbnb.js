@@ -12,11 +12,11 @@ $(document).ready(function () {
     $('DIV.amenities H4').text(nameList);
   });
 
-  $.get('http://0.0.0.0:5001/api/v1/status/', function (data) {
+  $.get('http://0.0.0.0:5001/api/v1/status/?format=json', function (data) {
     if (data.status === 'OK') {
-      $('.api_status').addClass('available');
+      $('DIV#api_status').addClass('available');
     } else {
-      $('.api_status').removeClass('available');
+      $('DIV#api_status').removeClass('available');
     }
   });
 });
