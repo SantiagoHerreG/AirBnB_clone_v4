@@ -9,7 +9,7 @@ $(document).ready(function () {
       idList.splice(idList.indexOf($(this).attr('data-id')), 1);
       nameList.splice(nameList.indexOf($(this).attr('data-name')), 1);
     }
-    $('DIV.amenities H4').text(nameList.join(', '));
+    $('DIV.amenities H4').text(nameList);
   });
   const CityidList = [];
   const StateCitynameList = [];
@@ -22,7 +22,7 @@ $(document).ready(function () {
       StateidList.splice(StateidList.indexOf($(this).attr('data-id')), 1);
       StateCitynameList.splice(StateCitynameList.indexOf($(this).attr('data-name')), 1);
     }
-    $('DIV.locations H4').text(StateCitynameList.join(', '));
+    $('DIV.locations H4').text(StateCitynameList);
   });
   $('DIV.locations UL.popover LI INPUT').change(function () {
     if ($(this).is(':checked')) {
@@ -32,9 +32,9 @@ $(document).ready(function () {
       CityidList.splice(CityidList.indexOf($(this).attr('data-id')), 1);
       StateCitynameList.splice(StateCitynameList.indexOf($(this).attr('data-name')), 1);
     }
-    $('DIV.locations H4').text(StateCitynameList.join(', '));
+    $('DIV.locations H4').text(StateCitynameList);
   });
-  $.get('http://localhost:5001/api/v1/status/?format=json', function (data) {
+  $.get('http://0.0.0.0:5001/api/v1/status/?format=json', function (data) {
     if (data.status === 'OK') {
       $('DIV#api_status').addClass('available');
     } else {
@@ -42,7 +42,6 @@ $(document).ready(function () {
     }
   });
   const renderPlaceCard = (place) => {
-
     return (`
     <article>
     <div class="title">
@@ -76,9 +75,9 @@ $(document).ready(function () {
   `);
   };
   const getPlaces = (StateidList = [], CityidList = [], idList = []) => {
-    const Payload = JSON.stringify({ 'states': StateidList, 'cities': CityidList, 'amenities': idList });
+    const Payload = JSON.stringify({ states: StateidList, cities: CityidList, amenities: idList });
     $.ajax({
-      url: 'http://localhost:5001/api/v1/places_search',
+      url: 'http://0.0.0.0:5001/api/v1/places_search',
       type: 'POST',
       dataType: 'json',
       contentType: 'application/json',
