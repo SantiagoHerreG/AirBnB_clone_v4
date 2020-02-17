@@ -9,7 +9,7 @@ $(document).ready(function () {
       idList.splice(idList.indexOf($(this).attr('data-id')), 1);
       nameList.splice(nameList.indexOf($(this).attr('data-name')), 1);
     }
-    $('DIV.amenities H4').text(nameList.join(', '));
+    $('DIV.amenities H4').text(nameList);
   });
   $.get('http://0.0.0.0:5001/api/v1/status/?format=json', function (data) {
     if (data.status === 'OK') {
